@@ -5,6 +5,14 @@
   --foreground: #171717;
 }
 
+:root[data-theme="dark"] {
+  --background-color: #424242;
+  --background-link: transparent;
+  --text-color: #c1c1c1;
+  --card-color: #333;
+  --dashboard-bg: #555;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
