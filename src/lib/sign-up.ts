@@ -16,11 +16,9 @@ const { data, error } = await authClient.signUp.email({
     }, {
         onRequest: (ctx) => {
             //show loading
-            
-        },
+       },
         onSuccess: (ctx) => {
             //redirect to the dashboard or sign in page
-
         },
         onError: (ctx) => {
             // display the error message

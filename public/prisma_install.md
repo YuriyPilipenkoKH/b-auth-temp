@@ -18,10 +18,10 @@ This creates:
 ✅ 3. Set your database URL in .env
 
 Example for PostgreSQL:
-DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/mydb"
+DATABASE_URL=""
 
 Example for MongoDB:
-DATABASE_URL="mongodb+srv://USER:PASS@cluster.mongodb.net/dbname?retryWrites=true&w=majority"
+DATABASE_URL=""
 
 ✅ 4. Update your schema.prisma
 
