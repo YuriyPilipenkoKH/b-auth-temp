@@ -5,7 +5,7 @@ import { prisma } from "./prisma/prisma";
 
 
 export const auth = betterAuth({
-  secret: process.env.AUTH_SECRET!,
+  secret: process.env.BETTER_AUTH_SECRET!,
   emailAndPassword: { enabled: true },
   socialProviders: { 
     github: { 
