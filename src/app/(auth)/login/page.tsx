@@ -1,3 +1,4 @@
+import Link from "next/link"
 
 
 function LoginPage() {
@@ -7,6 +8,9 @@ function LoginPage() {
           <h1 className='text-3xl font-bold text-center'>Login to Your Account</h1>
           {/* <SignInButton provider='google' />
           <SignInButton provider='github' /> */}
+           <p className='text-center'>Don`t have an account? 
+            <Link href="/signup" className="hover:text-amber-400">{" "}SignUp</Link>
+          </p>
         </div>
 
       {/* <SignInForm/> */}
