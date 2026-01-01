@@ -12,7 +12,7 @@ function SignupPage() {
       }}
     >
       {/* optional dark overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+      {/* <div className="absolute inset-0 bg-black/50" /> */}
 
       <div className="relative z-10 flex flex-col gap-5 items-center justify-center p-6">
         <div className="flex flex-col gap-5 w-[400px]">
