@@ -1,6 +1,6 @@
 "use client"
 
-import {  RegisterClientSchema, RegisterClientSchemaType, RegisterSchema } from '@/models/schemas'
+import {  RegInput,  RegisterSchema } from '@/models/schemas'
 import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -9,7 +9,6 @@ import capitalize from '@/lib/capitalize'
 import { useRouter } from 'next/navigation'
 import { signUpUser } from '@/lib/auth/sign-up';
 import { logger } from 'better-auth';
-import { log } from 'console';
 import { cn } from '@/lib/cn';
 import { formClasses } from '@/models/formClasses';
 
@@ -23,13 +22,13 @@ const SignUpForm = () => {
     formState,
     reset,
     setError, // Use this to manually set server-side errors
-  } = useForm<RegisterClientSchemaType>({
+  } = useForm<RegInput>({
     defaultValues: {
       name: '',
       email: '',
       password: '',
     },
-      mode:'all',
+      mode:'onBlur',
       resolver: zodResolver(RegisterSchema),
   })
   const {
@@ -41,7 +40,7 @@ const SignUpForm = () => {
 
   console.log("Form errors:", errors);
 
-  const onSubmit= async (data:RegisterClientSchemaType) => {
+  const onSubmit= async (data:RegInput) => {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("email", data.email);
