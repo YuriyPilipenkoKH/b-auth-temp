@@ -1,7 +1,16 @@
 
 .form-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.form-wrapper{
   background: var(--auth-form-bg);
-  color: var(--foreground);
+
+  border: 2px solid #ccc;
+
 }
 
 .form-error{}
@@ -10,11 +19,13 @@
 
 .spinner{}
 
-.sace{}
+.space{}
 
 .form{}
 
 .form-input{}
+
+.form-lael{}
 
 .input-container{}
 

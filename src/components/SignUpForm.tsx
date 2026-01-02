@@ -10,6 +10,8 @@ import { useRouter } from 'next/navigation'
 import { signUpUser } from '@/lib/auth/sign-up';
 import { logger } from 'better-auth';
 import { log } from 'console';
+import { cn } from '@/lib/cn';
+import { formClasses } from '@/models/formClasses';
 
 
 
@@ -96,7 +98,9 @@ const SignUpForm = () => {
     <form onSubmit={handleSubmit(onSubmit) } 
     autoComplete="off"
     noValidate
-    className='flex flex-col gap-4 items-center justify-center w-[400px]'>
+    className={cn(formClasses.container,'')}
+    // className='flex flex-col gap-4 items-center justify-center w-[400px]'
+    >
       <label  className='w-full'>
         <input
           {...register("name")}

@@ -1,5 +1,7 @@
 export const formClasses = {
   container: 'form-container',
+  wrapper: 'form-wrapper',
+
   error: 'form-error',
   loading: 'form-loading',
   spinner: 'spinner',
