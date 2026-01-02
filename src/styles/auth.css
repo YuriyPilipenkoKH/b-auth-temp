@@ -24,7 +24,12 @@
   border-radius: 1rem;
 }
 
-.form-error{}
+.form-error{
+  color: #d21619;
+  font-size: 0.75rem;
+  width: 100%;
+  margin-top:1em;
+}
 
 .form-loading{}
 

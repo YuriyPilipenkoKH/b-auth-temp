@@ -125,7 +125,7 @@ const SignUpForm = () => {
           placeholder="password"
           className={cn(formClasses.input,'')}
         />
-        {errors.password && <p className="text-purple-900">{errors.password.message}</p>}
+        {errors.password && <p className={formClasses.error}>{errors.password.message}</p>}
       </label>
 
       <button
