@@ -6,8 +6,8 @@
   --foreground: #171717;
 
   --auth-form-bg: #2c2c2c50;
-  --auth-input-bg: #3a3a3a;
-  --auth-input-border: #555;
+  --auth-input-bg: transparent;
+  --auth-input-border: #ccc;
   --auth-input-focus-border: #777;
   --auth-button-bg: #4a90e2;
   --auth-button-hover-bg: #357abd;

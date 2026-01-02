@@ -99,13 +99,12 @@ const SignUpForm = () => {
     autoComplete="off"
     noValidate
     className={cn(formClasses.container,'')}
-    // className='flex flex-col gap-4 items-center justify-center w-[400px]'
     >
       <label  className='w-full'>
         <input
           {...register("name")}
-          placeholder="Name"
-          className="input input-primary w-full"
+          placeholder="user name"
+          className={cn(formClasses.input,'')}
         />
         {errors.name && <p className="text-purple-900">{errors.name.message}</p>}
       </label>
@@ -113,8 +112,8 @@ const SignUpForm = () => {
       <label  className='w-full'>
         <input
           {...register("email")}
-          placeholder="Email"
-          className="input input-primary w-full"
+          placeholder="email"
+          className={cn(formClasses.input,'')}
         />
         {errors.email && <p className="text-purple-900">{errors.email.message}</p>}
       </label>
@@ -123,8 +122,8 @@ const SignUpForm = () => {
         <input
           {...register("password")}
           // type="password"
-          placeholder="Password"
-          className="input input-primary w-full"
+          placeholder="password"
+          className={cn(formClasses.input,'')}
         />
         {errors.password && <p className="text-purple-900">{errors.password.message}</p>}
       </label>

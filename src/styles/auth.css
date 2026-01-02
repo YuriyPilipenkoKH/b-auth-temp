@@ -12,7 +12,7 @@
   gap: 1rem;
   background: var(--auth-form-bg);
   padding: 2rem;
-  /* border: 2px solid #ccc; */
+  border: 2px solid #ccc;
   border-radius: 1rem;
 
 }
@@ -34,9 +34,20 @@
 
 .form{}
 
-.form-input{}
+.form-input{
+  padding: 1em 1em;
+  background: var(--auth-input-bg);
+  border: 2px solid var(--auth-input-border);
+  border-radius: 0.5em;
+  width: 100%;
+  color: var(--foreground);
+  font-size: 0.8rem;
+  outline: none;
+}
 
-.form-lael{}
+.form-label{
+
+}
 
 .input-container{}
 
