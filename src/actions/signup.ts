@@ -1,5 +1,6 @@
 "use server"
 
+import { redirect } from "next/navigation";
 import { auth } from "../../auth";
 
 
@@ -16,4 +17,5 @@ export async function signUpUser(formData: FormData) {
       callbackURL: "/dashboard",
     },
   });
+  redirect("/dashboard");
 }
