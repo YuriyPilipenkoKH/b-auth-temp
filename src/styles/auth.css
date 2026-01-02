@@ -8,8 +8,9 @@
 
 .form-wrapper{
   background: var(--auth-form-bg);
-
+  padding: 2rem;
   border: 2px solid #ccc;
+  border-radius: 1rem;
 
 }
 
