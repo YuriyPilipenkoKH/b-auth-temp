@@ -7,12 +7,10 @@
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center"
       style={{
-        backgroundImage:
-          "url('https://res.cloudinary.com/dwdkw1a4j/image/upload/v1767283634/b-auth-temp/img/nrurpajrd1ivzf9i7unj.jpg')",
+       backgroundImage: `url(${process.env.NEXT_PUBLIC_AUTH_BG})`,
       }}
     >
-      {/* <div className='absolute top-[1rem] left-[1rem]'> */}
-      {/* </div> */}
+
         {children}
     </div>
   )
