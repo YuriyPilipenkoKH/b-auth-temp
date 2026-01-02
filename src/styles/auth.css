@@ -40,9 +40,16 @@
   border: 2px solid var(--auth-input-border);
   border-radius: 0.5em;
   width: 100%;
-  color: var(--foreground);
-  font-size: 0.8rem;
+  /* color: #bddb45; */
+  font-size: 1rem;
   outline: none;
+  &::placeholder{
+    color: #ccc;
+    font-size: 0.75rem;
+  }
+}
+.valid-input{
+  border: 2px solid #05f345;
 }
 
 .form-label{
