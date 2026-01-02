@@ -63,4 +63,25 @@
 
 .input-container{}
 
-.submit-button{}
+.submit-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0.5em;
+  padding: 1em;
+  background: var(--auth-button-bg);
+  border: none;
+  border-radius: 0.5em;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  &:hover{
+    background: var(--auth-button-hover-bg);
+  }
+  &:disabled{
+    background: #216dd080;
+    cursor: not-allowed;
+  }
+}
