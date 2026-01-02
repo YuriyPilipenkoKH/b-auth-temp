@@ -11,6 +11,7 @@ import { signUpUser } from '@/lib/auth/sign-up';
 import { logger } from 'better-auth';
 import { cn } from '@/lib/cn';
 import { formClasses } from '@/models/formClasses';
+import { BtnX, SubmitBtn } from './Button';
 
 
 
@@ -129,13 +130,12 @@ const SignUpForm = () => {
         {errors.password && <p className={formClasses.error}>{errors.password.message}</p>}
       </label>
 
-      <button
-        type="submit"
-        className="btn btn-primary bg-green-900 w-full"
+      <SubmitBtn
+
         disabled={isSubmitting || !isValid || !isDirty} >
         {isSubmitting ? <ImSpinner9 className='animate-spin'/> : null}
         {isSubmitting ? "Sending..." : "Sign Up"}
-      </button>
+      </SubmitBtn>
     </form>
   )
 }
