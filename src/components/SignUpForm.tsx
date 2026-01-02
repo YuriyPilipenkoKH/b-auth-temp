@@ -1,6 +1,6 @@
 "use client"
 
-import {  RegisterClientSchema, RegisterClientSchemaType } from '@/models/schemas'
+import {  RegisterClientSchema, RegisterClientSchemaType, RegisterSchema } from '@/models/schemas'
 import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -30,7 +30,7 @@ const SignUpForm = () => {
       password: '',
     },
       mode:'all',
-      resolver: zodResolver(RegisterClientSchema),
+      resolver: zodResolver(RegisterSchema),
   })
   const {
     errors,
@@ -38,6 +38,8 @@ const SignUpForm = () => {
     isValid ,
     isSubmitting,
   } = formState
+
+  console.log("Form errors:", errors);
 
   const onSubmit= async (data:RegisterClientSchemaType) => {
     const formData = new FormData();
@@ -106,7 +108,7 @@ const SignUpForm = () => {
           placeholder="user name"
           className={cn(formClasses.input,'')}
         />
-        {errors.name && <p className="text-purple-900">{errors.name.message}</p>}
+        {errors.name && <p className={formClasses.error}>{errors.name.message}</p>}
       </label>
 
       <label  className='w-full'>
@@ -115,7 +117,7 @@ const SignUpForm = () => {
           placeholder="email"
           className={cn(formClasses.input,'')}
         />
-        {errors.email && <p className="text-purple-900">{errors.email.message}</p>}
+        {errors.email && <p className={formClasses.error}>{errors.email.message}</p>}
       </label>
 
       <label className='w-full'>
