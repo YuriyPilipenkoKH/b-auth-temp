@@ -13,7 +13,6 @@ export async function signInUser(formData: FormData) {
     body: {
       email,
       password,
-
     },
   });
   redirect("/dashboard");
