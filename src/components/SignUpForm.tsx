@@ -5,13 +5,11 @@ import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ImSpinner9 } from "react-icons/im";
-import capitalize from '@/lib/capitalize'
 import { useRouter } from 'next/navigation'
-import { signUpUser } from '@/lib/auth/sign-up';
-import { logger } from 'better-auth';
 import { cn } from '@/lib/cn';
 import { formClasses } from '@/models/formClasses';
-import { BtnX, SubmitBtn } from './Button';
+import { SubmitBtn } from './Button';
+import { signUpUser } from '@/actions/signup';
 
 
 
@@ -67,11 +65,7 @@ const SignUpForm = () => {
     //  }
     try {
 
-      const result = await signUpUser(
-        data.email, 
-        data.password, 
-        data.name 
-      );
+      const result = await signUpUser(formData);
 
       console.log("Registration result:", result);
       // if (result?.success && result?.user?.name) {
