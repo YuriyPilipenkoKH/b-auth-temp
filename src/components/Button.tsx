@@ -1,3 +1,5 @@
+'use client';
+
 import { cn } from '@/lib/cn';
 import { formClasses } from '@/models/formClasses';
 import { useRouter } from 'next/navigation';
@@ -13,7 +15,7 @@ import { useRouter } from 'next/navigation';
   export  const SubmitBtn: React.FC<ButtonProps> = ({ children, ...props }) => {
     return <button 
       type='submit' 
-      className={cn(formClasses.submitButton,'')}
+      className={cn(formClasses.submitButton,'SubmitBtn')}
       {...props}
         > 
       {children}
