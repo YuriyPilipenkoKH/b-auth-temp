@@ -1,8 +1,15 @@
+import { redirect } from "next/navigation";
+import { auth } from "../../../../auth";
 
 
-function DashboardPage() {
+async function DashboardPage() {
+   const session = await auth.api.getSession();
+
+  if (!session) redirect("/login");
   return (
-    <div>Dashboard Page here</div>
+    <div>
+      <h1>Welcome {session.user.name}</h1>
+    </div>
   )
 }
 
