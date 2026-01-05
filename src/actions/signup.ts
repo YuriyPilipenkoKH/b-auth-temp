@@ -20,7 +20,7 @@ export async function signUpUser(formData: FormData) {
     const existingUser = await db.collection("user").findOne({ email });
 
     if (existingUser) {
-      throw new Error("A user with this email already exists.");
+      return { success: false, error: "A user with this email already exists." };
     }
 
     await auth.api.signUpEmail({
@@ -31,13 +31,10 @@ export async function signUpUser(formData: FormData) {
       },
     });
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error("Signup error:", error.message);
-      throw new Error(error.message);
-    }
+    console.error('Error occurred while signing up:', error);
+    const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
+    return { success: false, error: errorMessage }
 
-    console.error("Unknown signup error:", error);
-    throw new Error("Failed to sign up");
   }
 
   redirect("/dashboard");

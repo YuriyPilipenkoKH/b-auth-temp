@@ -20,7 +20,7 @@ export async function signInUser(formData: FormData) {
       const existingUser = await db.collection("user").findOne({ email });
   
       if (!existingUser) {
-        throw new Error("A user with this email does not exist.");
+        return { success: false, error: "Email is not registered." };
       }
   
       await auth.api.signInEmail({
@@ -30,13 +30,9 @@ export async function signInUser(formData: FormData) {
         },
   });
     } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error("Signin error:", error.message);
-        throw new Error(error.message);
-      }
-  
-      console.error("Unknown sigin error:", error);
-      throw new Error("Failed to sign in");
+    console.error('Error occurred while signing in:', error);
+    const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
+    return { success: false, error: errorMessage }
     }
   
   redirect("/dashboard");
