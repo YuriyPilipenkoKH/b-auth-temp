@@ -9,13 +9,27 @@ export async function signUpUser(formData: FormData) {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;  
 
-  await auth.api.signUpEmail({
-    body: {
-      name,
-      email,
-      password,
+    if (!name || !email || !password) {
+    throw new Error("Missing required fields");
+  }
 
-    },
-  });
+ try {
+    await auth.api.signUpEmail({
+      body: {
+        name,
+        email,
+        password,
+      },
+    });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error("Signup error:", error.message);
+      throw new Error(error.message);
+    }
+
+    console.error("Unknown signup error:", error);
+    throw new Error("Failed to sign up");
+  }
+
   redirect("/dashboard");
 }
