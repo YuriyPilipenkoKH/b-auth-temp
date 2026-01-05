@@ -1,5 +1,7 @@
 // src/auth.ts
+import { db } from "@/lib/mongo";
 import { betterAuth } from "better-auth";
+import { mongodbAdapter } from "better-auth/adapters/mongodb";
 
 
 import { nextCookies } from "better-auth/next-js";
@@ -7,22 +9,21 @@ import { nextCookies } from "better-auth/next-js";
 
 export const auth = betterAuth({
   secret: process.env.BETTER_AUTH_SECRET!,
+  plugins: [nextCookies()] ,
   emailAndPassword: { 
     enabled: true ,
-    requireEmailVerification: true // 👈 IMPORTANT
   },
-   plugins: [nextCookies()] ,
   socialProviders: { 
     github: { 
       clientId: process.env.GITHUB_CLIENT_ID as string, 
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string, 
     }, 
   }, 
-  // database: prismaAdapter(prisma, {
-  //   provider: "mongodb", // or "mysql", "postgresql", ...etc
-  // }),
+  database: mongodbAdapter({
+    client: db,
+  }),
 
-  middleware: {
-    publicRoutes: ["/", "/login", "/signup"],
-  },
+  // middleware: {
+  //   publicRoutes: ["/", "/login", "/signup"],
+  // },
 });
