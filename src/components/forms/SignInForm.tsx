@@ -11,6 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import capitalize from "@/lib/capitalize";
 
 
 function SignInForm() {
@@ -70,22 +71,22 @@ function SignInForm() {
 
       const result = await signInUser(formData);
 
-      console.log("Registration result:", result);
+      console.log("result:", result);
       if (result?.success && result?.user?.name) {
-        toast.success("Registration successful");
+                 toast.success( 
+           `${capitalize(result?.user?.name)}, you're successfully logged in! `  
+          );
         // await nextAuthSignIn(result?.user?.name)
         reset()
         router.push('/dashboard')
       } 
       else if (result?.success === false && result?.error) {
    
-
         setLogError(result.error);
-        
       }
     } catch (error) {
-      console.error("Registration failed:", error);
-      toast.error("Registration failed");
+      console.error("login failed:", error);
+      toast.error("Login failed");
     }
   };
 

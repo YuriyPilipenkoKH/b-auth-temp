@@ -1,8 +1,9 @@
 "use server"
 
-import { redirect } from "next/navigation";
+
 import { auth } from "../../auth";
 import { mongoClient } from "@/lib/mongo";
+import { revalidatePath } from "next/cache";
 
 
 export async function signUpUser(formData: FormData) {
@@ -11,7 +12,7 @@ export async function signUpUser(formData: FormData) {
   const password = formData.get("password") as string;  
 
     if (!name || !email || !password) {
-    throw new Error("Missing required fields");
+     return { success: false, error: "Missing required fields" };
   }
 
  try {
@@ -19,6 +20,7 @@ export async function signUpUser(formData: FormData) {
     const db = mongoClient.db(process.env.MONGODB_DB_NAME);
     const existingUser = await db.collection("user").findOne({ email });
 
+   
     if (existingUser) {
       return { success: false, error: "A user with this email already exists." };
     }
@@ -30,6 +32,13 @@ export async function signUpUser(formData: FormData) {
         password,
       },
     });
+    revalidatePath('/dashboard');
+      return { 
+        success: true, 
+        message: `${name} signed up successfully.`, 
+        
+      };
+
   } catch (error: unknown) {
     console.error('Error occurred while signing up:', error);
     const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
@@ -37,5 +46,5 @@ export async function signUpUser(formData: FormData) {
 
   }
 
-  redirect("/dashboard");
+
 }

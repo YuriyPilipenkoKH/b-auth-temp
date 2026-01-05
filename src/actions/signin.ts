@@ -12,7 +12,7 @@ export async function signInUser(formData: FormData) {
   const password = formData.get("password") as string;  
 
     if (!email || !password) {
-    throw new Error("Missing required fields");
+    return { success: false, error: "Missing required fields" };
   }
 
    try {

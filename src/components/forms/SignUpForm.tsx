@@ -67,12 +67,12 @@ const SignUpForm = () => {
       const result = await signUpUser(formData);
 
       console.log("Registration result:", result);
-      // if (result?.success && result?.user?.name) {
-      //   toast.success("Registration successful");
-      //   await nextAuthSignIn(result?.user?.name)
-      //   reset()
-      //   router.push('/dashboard')
-      // } 
+      if (result?.success ) {
+        toast.success("Registration successful");
+        // await nextAuthSignIn(result?.user?.name)
+        reset()
+        router.push('/dashboard')
+      } 
       // else if (result?.errors) {
       // // Map server errors to react-hook-form errors
       // for (const [field, messages] of Object.entries(result.errors)) {
