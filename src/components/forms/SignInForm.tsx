@@ -6,14 +6,16 @@ import { formClasses } from "@/models/formClasses";
 import { cn } from "@/lib/cn";
 import toast from "react-hot-toast";
 import { signInUser } from "@/actions/signin";
-import { LogInput, LoginSchema } from "@/models/schemas";
+import { LogInput, LoginSchema, RegInput } from "@/models/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 
 function SignInForm() {
- const router = useRouter()
+  const [logError, setLogError] = useState<string | null>(null)
+  const router = useRouter()
   const {
     register, 
     handleSubmit,
@@ -36,6 +38,9 @@ function SignInForm() {
   } = formState
 
   console.log("Form errors:", errors);
+  const handleInputChange =   (field: keyof LogInput) => {
+  if(logError) setLogError(null)
+  }
 
   const onSubmit= async (data:LogInput) => {
     const formData = new FormData();
@@ -66,22 +71,18 @@ function SignInForm() {
       const result = await signInUser(formData);
 
       console.log("Registration result:", result);
-      // if (result?.success && result?.user?.name) {
-      //   toast.success("Registration successful");
-      //   await nextAuthSignIn(result?.user?.name)
-      //   reset()
-      //   router.push('/dashboard')
-      // } 
-      // else if (result?.errors) {
-      // // Map server errors to react-hook-form errors
-      // for (const [field, messages] of Object.entries(result.errors)) {
-      //   setError(field as keyof RegisterClientSchemaType, {
-      //     type: "server",
-      //     message: messages[0], // Use the first error message for simplicity
-      //   });
-      // }
+      if (result?.success && result?.user?.name) {
+        toast.success("Registration successful");
+        // await nextAuthSignIn(result?.user?.name)
+        reset()
+        router.push('/dashboard')
+      } 
+      else if (result?.success === false && result?.error) {
+   
+
+        setLogError(result.error);
         
-      // }
+      }
     } catch (error) {
       console.error("Registration failed:", error);
       toast.error("Registration failed");
@@ -97,7 +98,7 @@ function SignInForm() {
 
       <label  className='w-full'>
         <input
-          {...register("email")}
+          {...register("email",{ onChange: handleInputChange })}
           placeholder="email"
           className={cn(formClasses.input,'')}
         />
@@ -106,12 +107,13 @@ function SignInForm() {
 
       <label className='w-full'>
         <input
-          {...register("password")}
+           {...register("password",{ onChange: handleInputChange })}
           // type="password"
           placeholder="password"
           className={cn(formClasses.input,'')}
         />
         {errors.password && <p className={formClasses.error}>{errors.password.message}</p>}
+        {logError && <p className={formClasses.error}>{logError}</p>}
       </label>
 
       <SubmitBtn
