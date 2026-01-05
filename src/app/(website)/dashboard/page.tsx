@@ -3,8 +3,7 @@ import { getServerSession } from "@/lib/getServerSession";
 
 
 async function DashboardPage() {
-const session = await getServerSession();
-
+  const session = await getServerSession();
   if (!session) redirect("/login");
   return (
     <div>

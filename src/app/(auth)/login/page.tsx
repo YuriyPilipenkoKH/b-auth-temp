@@ -1,7 +1,11 @@
+import { getServerSession } from "@/lib/getServerSession";
 import Link from "next/link"
+import { redirect } from "next/navigation";
 
 
-function LoginPage() {
+async function LoginPage() {
+     const session = await getServerSession();
+      if (session)   redirect('/dashboard')
   return (
       <div className='flex flex-col gap-5 items-center justify-center   p-6'  >
         <div className='flex flex-col gap-5 w-[400px]'>
