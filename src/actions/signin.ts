@@ -1,6 +1,6 @@
 "use server"
 
-import { redirect } from "next/navigation";
+
 import { auth } from "../../auth";
 import { mongoClient } from "@/lib/mongo";
 import { revalidatePath } from "next/cache";
@@ -25,18 +25,19 @@ export async function signInUser(formData: FormData) {
       }
   
       await auth.api.signInEmail({
-        body: {
-          email,
-          password,
-        },
-
+        body: { email, password },
       });
      revalidatePath('/dashboard');
 
       return { 
         success: true, 
         message: `${existingUser.name} logged in successfully.`, 
-        user: existingUser
+        user: {
+          id: existingUser.id,
+          name: existingUser.name,
+          email: existingUser.email,
+          image: existingUser.image ?? null,
+        }, // ✅ plain object
       };
 
     } catch (error: unknown) {
