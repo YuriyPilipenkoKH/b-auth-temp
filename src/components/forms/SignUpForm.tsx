@@ -8,7 +8,7 @@ import { ImSpinner9 } from "react-icons/im";
 import { useRouter } from 'next/navigation'
 import { cn } from '@/lib/cn';
 import { formClasses } from '@/models/formClasses';
-import { SubmitBtn } from './Button';
+import { SubmitBtn } from '../button/Button';
 import { signUpUser } from '@/actions/signup';
 
 

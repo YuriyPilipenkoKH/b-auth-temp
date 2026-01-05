@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { getServerSession } from "@/lib/getServerSession";
-import { LogoutButton } from "@/components/LogoutButton";
+import { LogoutButton } from "@/components/button/LogoutButton";
 
 
 async function DashboardPage() {
