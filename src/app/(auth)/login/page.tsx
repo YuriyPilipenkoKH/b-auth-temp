@@ -1,3 +1,4 @@
+import SignInForm from "@/components/forms/SignInForm"
 import Link from "next/link"
 
 
@@ -9,12 +10,12 @@ import Link from "next/link"
           <h1 className='text-3xl font-bold text-center'>Login to Your Account</h1>
           {/* <SignInButton provider='google' />
           <SignInButton provider='github' /> */}
+      <SignInForm/>
            <p className='text-center'>Don`t have an account? 
             <Link href="/signup" className="hover:text-amber-400">{" "}SignUp</Link>
           </p>
         </div>
 
-      {/* <SignInForm/> */}
     </div>
   )
 }

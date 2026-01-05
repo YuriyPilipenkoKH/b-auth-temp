@@ -1,3 +1,5 @@
+"use client"
+
 import { ImSpinner9 } from "react-icons/im";
 import { SubmitBtn } from "../button/Button";
 import { formClasses } from "@/models/formClasses";
