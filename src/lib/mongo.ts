@@ -1,13 +1,12 @@
 // src/lib/mongo.ts
-import { MongoClient } from "mongodb";
+import { MongoClient, Db } from "mongodb";
 
 const uri = process.env.MONGODB_URI!;
-if (!uri) {
-  throw new Error("Missing MONGODB_URI");
-}
+const dbName = process.env.MONGODB_DB_NAME!;
 
 declare global {
   var _mongoClient: MongoClient | undefined;
+  var _mongoDb: Db | undefined;
 }
 
 export const mongoClient =
@@ -16,6 +15,14 @@ export const mongoClient =
 if (process.env.NODE_ENV !== "production") {
   global._mongoClient = mongoClient;
 }
+
+export const mongoDb =
+  global._mongoDb ?? mongoClient.db(dbName);
+
+if (process.env.NODE_ENV !== "production") {
+  global._mongoDb = mongoDb;
+}
+
 
 //========================//
 

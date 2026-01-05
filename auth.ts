@@ -1,9 +1,10 @@
 // src/auth.ts
 
-import { mongoClient } from "@/lib/mongo";
+
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { nextCookies } from "better-auth/next-js";
+import { mongoDb } from "./src/lib/mongo";
 
 
 
@@ -19,9 +20,7 @@ export const auth = betterAuth({
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string, 
     }, 
   }, 
-  database: mongodbAdapter({
-    client: mongoClient,
-  }),
+database: mongodbAdapter(mongoDb), // ✅ THIS is the fix
 
 });
 
