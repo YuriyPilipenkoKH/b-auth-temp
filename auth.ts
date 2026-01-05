@@ -1,10 +1,10 @@
 // src/auth.ts
-import { db } from "@/lib/mongo";
+
+import { mongoClient } from "@/lib/mongo";
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
-
-
 import { nextCookies } from "better-auth/next-js";
+
 
 
 export const auth = betterAuth({
@@ -20,10 +20,11 @@ export const auth = betterAuth({
     }, 
   }, 
   database: mongodbAdapter({
-    client: db,
+    client: mongoClient,
   }),
 
-  // middleware: {
-  //   publicRoutes: ["/", "/login", "/signup"],
-  // },
 });
+
+// middleware: {
+//   publicRoutes: ["/", "/login", "/signup"],
+// },

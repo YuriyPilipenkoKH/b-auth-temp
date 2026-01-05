@@ -2,6 +2,24 @@
 import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI!;
-const client = new MongoClient(uri);
+if (!uri) {
+  throw new Error("Missing MONGODB_URI");
+}
 
-export const db = client.db();
+declare global {
+  var _mongoClient: MongoClient | undefined;
+}
+
+export const mongoClient =
+  global._mongoClient ?? new MongoClient(uri);
+
+if (process.env.NODE_ENV !== "production") {
+  global._mongoClient = mongoClient;
+}
+
+//========================//
+
+// const uri = process.env.MONGODB_URI!;
+// export const mongoClient = new MongoClient(uri);
+
+// export const db = mongoClient.db();
