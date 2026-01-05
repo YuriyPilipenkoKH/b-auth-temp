@@ -38,7 +38,6 @@ function SignInForm() {
     isSubmitting,
   } = formState
 
-  console.log("Form errors:", errors);
   const handleInputChange =   (field: keyof LogInput) => {
   if(logError) setLogError(null)
   }

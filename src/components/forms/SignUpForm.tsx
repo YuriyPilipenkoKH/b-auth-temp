@@ -10,10 +10,12 @@ import { cn } from '@/lib/cn';
 import { formClasses } from '@/models/formClasses';
 import { SubmitBtn } from '../button/Button';
 import { signUpUser } from '@/actions/signup';
+import { useState } from 'react';
 
 
 const SignUpForm = () => {
- const router = useRouter()
+  const [logError, setLogError] = useState<string | null>(null)
+  const router = useRouter()
   const {
     register, 
     handleSubmit,
@@ -35,8 +37,9 @@ const SignUpForm = () => {
     isValid ,
     isSubmitting,
   } = formState
-
-  console.log("Form errors:", errors);
+    const handleInputChange =   (field: keyof RegInput) => {
+    if(logError) setLogError(null)
+    }
 
   const onSubmit= async (data:RegInput) => {
     const formData = new FormData();
@@ -97,7 +100,7 @@ const SignUpForm = () => {
     >
       <label  className='w-full'>
         <input
-          {...register("name")}
+          {...register("name",{ onChange: handleInputChange })}
           placeholder="user name"
           className={cn(formClasses.input,'')}
         />
@@ -106,7 +109,7 @@ const SignUpForm = () => {
 
       <label  className='w-full'>
         <input
-          {...register("email")}
+          {...register("email",{ onChange: handleInputChange })}
           placeholder="email"
           className={cn(formClasses.input,'')}
         />
@@ -115,7 +118,7 @@ const SignUpForm = () => {
 
       <label className='w-full'>
         <input
-          {...register("password")}
+          {...register("password",{ onChange: handleInputChange })}
           // type="password"
           placeholder="password"
           className={cn(formClasses.input,'')}
