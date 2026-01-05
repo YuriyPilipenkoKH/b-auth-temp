@@ -20,7 +20,7 @@ export const auth = betterAuth({
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string, 
     }, 
   }, 
-database: mongodbAdapter(mongoDb), // ✅ THIS is the fix
+  database: mongodbAdapter(mongoDb), // ✅ THIS is the fix
 
 });
 
