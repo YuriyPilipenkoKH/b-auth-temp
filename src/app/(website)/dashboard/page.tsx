@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { getServerSession } from "@/lib/getServerSession";
+import { LogoutButton } from "@/components/LogoutButton";
 
 
 async function DashboardPage() {
@@ -8,6 +9,7 @@ async function DashboardPage() {
   return (
     <div>
       <h1>Welcome {session.user.name}</h1>
+      <LogoutButton username={session.user.name} />
     </div>
   )
 }
