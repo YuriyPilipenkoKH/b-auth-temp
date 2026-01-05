@@ -18,9 +18,9 @@ export const auth = betterAuth({
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string, 
     }, 
   }, 
-  database: prismaAdapter(prisma, {
-    provider: "mongodb", // or "mysql", "postgresql", ...etc
-  }),
+  // database: prismaAdapter(prisma, {
+  //   provider: "mongodb", // or "mysql", "postgresql", ...etc
+  // }),
 
   middleware: {
     publicRoutes: ["/", "/login", "/signup"],
