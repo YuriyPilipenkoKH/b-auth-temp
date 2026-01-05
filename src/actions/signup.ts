@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { auth } from "../../auth";
+import { mongoClient } from "@/lib/mongo";
 
 
 export async function signUpUser(formData: FormData) {
@@ -14,6 +15,14 @@ export async function signUpUser(formData: FormData) {
   }
 
  try {
+    // Connect to Mongo and check if user already exists
+    const db = mongoClient.db(process.env.MONGODB_DB_NAME);
+    const existingUser = await db.collection("user").findOne({ email });
+
+    if (existingUser) {
+      throw new Error("A user with this email already exists.");
+    }
+
     await auth.api.signUpEmail({
       body: {
         name,
