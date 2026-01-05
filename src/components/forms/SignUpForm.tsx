@@ -14,7 +14,7 @@ import { signUpUser } from '@/actions/signup';
 
 
 const SignUpForm = () => {
- const router = useRouter()
+//  const router = useRouter()
   const {
     register, 
     handleSubmit,
