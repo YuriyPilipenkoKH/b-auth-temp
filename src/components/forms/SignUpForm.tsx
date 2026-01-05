@@ -12,7 +12,6 @@ import { SubmitBtn } from '../button/Button';
 import { signUpUser } from '@/actions/signup';
 
 
-
 const SignUpForm = () => {
  const router = useRouter()
   const {

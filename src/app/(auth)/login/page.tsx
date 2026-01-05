@@ -1,18 +1,23 @@
 import SignInForm from "@/components/forms/SignInForm"
+import { cn } from "@/lib/cn"
+import { formClasses } from "@/models/formClasses"
 import Link from "next/link"
 
 
  function LoginPage() {
 
   return (
-      <div className='flex flex-col gap-5 items-center justify-center   p-6'  >
-        <div className='flex flex-col gap-5 w-[400px]'>
-          <h1 className='text-3xl font-bold text-center'>Login to Your Account</h1>
+      <div     className={cn(formClasses.wrapper,'backdrop-blur-sm ')}>
+         <div className="flex flex-col gap-2 ">
+          <h1 className="text-3xl font-bold  text-white">Login </h1>
+          <p>Enter Your Account</p>
           {/* <SignInButton provider='google' />
           <SignInButton provider='github' /> */}
       <SignInForm/>
            <p className='text-center'>Don`t have an account? 
-            <Link href="/signup" className="hover:text-amber-400">{" "}SignUp</Link>
+            <Link href="/signup" className="hover:text-amber-400">
+            {" "}SignUp
+            </Link>
           </p>
         </div>
 

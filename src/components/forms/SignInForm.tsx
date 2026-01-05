@@ -9,10 +9,11 @@ import { signInUser } from "@/actions/signin";
 import { LogInput, LoginSchema } from "@/models/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 
 function SignInForm() {
-//  const router = useRouter()
+ const router = useRouter()
   const {
     register, 
     handleSubmit,
@@ -117,7 +118,7 @@ function SignInForm() {
 
         disabled={isSubmitting || !isValid || !isDirty} >
         {isSubmitting ? <ImSpinner9 className='animate-spin'/> : null}
-        {isSubmitting ? "Sending..." : "Sign Up"}
+        {isSubmitting ? "Proccess..." : "Login"}
       </SubmitBtn>
     </form>
   )
