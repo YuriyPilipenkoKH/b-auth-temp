@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "../../auth";
 import { mongoClient } from "@/lib/mongo";
+import { revalidatePath } from "next/cache";
 
 
 export async function signInUser(formData: FormData) {
@@ -28,13 +29,22 @@ export async function signInUser(formData: FormData) {
           email,
           password,
         },
-  });
+
+      });
+     revalidatePath('/dashboard');
+
+      return { 
+        success: true, 
+        message: `${existingUser.name} logged in successfully.`, 
+        user: existingUser
+      };
+
     } catch (error: unknown) {
     console.error('Error occurred while signing in:', error);
     const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
     return { success: false, error: errorMessage }
     }
+
   
-  redirect("/dashboard");
 
 }
