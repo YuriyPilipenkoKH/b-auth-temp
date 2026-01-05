@@ -1,17 +1,9 @@
 import { redirect } from "next/navigation";
-import { auth } from "../../../../auth";
-import { headers } from "next/headers";
-import { log } from "console";
+import { getServerSession } from "@/lib/getServerSession";
 
 
 async function DashboardPage() {
-  const h = await headers(); // ✅ await it
-  const headersObj: Record<string, string> = {};
-  h.forEach((value, key) => {
-    headersObj[key] = value;
-  });
-  const session = await auth.api.getSession({ headers: headersObj });
-
+const session = await getServerSession();
 
   if (!session) redirect("/login");
   return (
