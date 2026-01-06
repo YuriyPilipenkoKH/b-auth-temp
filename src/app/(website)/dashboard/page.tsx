@@ -1,6 +1,10 @@
 import { redirect } from "next/navigation";
 import { getServerSession } from "@/lib/getServerSession";
 import { LogoutButton } from "@/components/button/LogoutButton";
+import capitalize from "@/lib/capitalize";
+import Link from "next/link";
+import { FlatBtn } from "@/components/button/Button";
+import { GrHomeRounded } from "react-icons/gr";
 
 
 async function DashboardPage() {
@@ -13,7 +17,10 @@ async function DashboardPage() {
        backgroundImage: `url(${process.env.NEXT_PUBLIC_DASHBOARD_BG})`,
       }}
     >
-      <h1>Welcome {session.user.name}</h1>
+      <FlatBtn>
+        <Link href="/"><GrHomeRounded /></Link>
+      </FlatBtn>
+      <h1>Welcome {capitalize(session.user.name)}</h1>
       <LogoutButton username={session.user.name} />
     </div>
   )
