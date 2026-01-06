@@ -32,6 +32,11 @@ export async function signUpUser(formData: FormData) {
         password,
       },
     });
+    // 2️⃣ Assign role securely (SERVER ONLY)
+    await db.collection("users").updateOne(
+      { email },
+      { $set: { role: "USER" } }
+    );
     revalidatePath('/dashboard');
       return { 
         success: true, 

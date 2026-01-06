@@ -7,6 +7,7 @@ import { FlatBtn } from "@/components/button/Button";
 import { GrHomeRounded } from "react-icons/gr";
 
 
+
 async function DashboardPage() {
   const session = await getServerSession();
   if (!session) redirect("/login");
@@ -18,6 +19,7 @@ async function DashboardPage() {
       }}
     >
       <div className="flex gap-2 items-center justify-end">
+
         <FlatBtn>
           <Link href="/"><GrHomeRounded /></Link>
         </FlatBtn>
