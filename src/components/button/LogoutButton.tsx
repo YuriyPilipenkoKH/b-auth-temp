@@ -2,7 +2,7 @@
 import { signOutUser } from "@/actions/signout";
 import capitalize from "@/lib/capitalize";
 import { cn } from "@/lib/cn";
-import { wait } from "@/lib/wait";
+
 import { useRouter } from "next/navigation";
 
 import { useFormStatus } from "react-dom";
@@ -20,7 +20,7 @@ export const LogoutButton:React.FC<LogoutButtonProps> = ({username} :LogoutButto
     const res = await signOutUser();
 
     if (res.success) {
-      toast.success(`Logout successful, ${username}!`);
+      toast.success(`Good bye, ${capitalize(username)}!`);
       router.push("/login");
     }
   };

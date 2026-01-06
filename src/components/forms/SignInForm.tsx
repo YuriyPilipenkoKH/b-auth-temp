@@ -73,7 +73,7 @@ function SignInForm() {
       console.log("result:", result);
       if (result?.success && result?.user?.name) {
                  toast.success( 
-           `${capitalize(result?.user?.name)}, you're successfully logged in! `  
+           `Welcome ${capitalize(result?.user?.name)} `  
           );
         // await nextAuthSignIn(result?.user?.name)
         reset()
