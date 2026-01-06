@@ -25,16 +25,12 @@ export const LogoutButton:React.FC<LogoutButtonProps> = ({username} :LogoutButto
     }
   };
   return (
-   
-      <form onClick={handleLogout} >
-        <button
-          className={cn("btn btn-info logout-btn ", )}
-          // onClick={handleLogout}  
-          >
-            {username}{' '}
-            {pending ? 'process' : 'LogOut'}
-        </button>
-      </form>
-
+    <button
+      className={cn("p-4 bg-blue-900 flex flex-col items-center cursor-pointer", )}
+      onClick={handleLogout}  
+      >
+        {capitalize(username)}{' '}
+        {pending ? 'process' : 'LogOut'}
+    </button>
   );
 };
