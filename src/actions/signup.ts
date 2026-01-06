@@ -22,7 +22,7 @@ export async function signUpUser(formData: FormData) {
 
    
     if (existingUser) {
-      return { success: false, error: "A user with this email already exists." };
+      return { success: false, error: "User already exists." };
     }
 
     await auth.api.signUpEmail({

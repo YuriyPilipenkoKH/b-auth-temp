@@ -12,16 +12,18 @@ async function DashboardPage() {
   if (!session) redirect("/login");
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-end bg-cover bg-center"
+      className="min-h-screen flex gap-2 items-center justify-end bg-cover bg-center"
       style={{
        backgroundImage: `url(${process.env.NEXT_PUBLIC_DASHBOARD_BG})`,
       }}
     >
-      <FlatBtn>
-        <Link href="/"><GrHomeRounded /></Link>
-      </FlatBtn>
-      <h1>Welcome {capitalize(session.user.name)}</h1>
-      <LogoutButton username={session.user.name} />
+      <div className="flex gap-2 items-center justify-end">
+        <FlatBtn>
+          <Link href="/"><GrHomeRounded /></Link>
+        </FlatBtn>
+        <h1>Welcome {capitalize(session.user.name)}</h1>
+        <LogoutButton username={session.user.name} />
+      </div>
     </div>
   )
 }
