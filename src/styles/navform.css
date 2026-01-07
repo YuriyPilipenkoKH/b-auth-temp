@@ -1,0 +1,26 @@
+
+.navform_input {
+  display: flex;
+  height: 48px;
+
+  padding: 20px 16px; /* py-5 px-4 */
+
+  background-color: var(--primary);
+  border-radius: 6px; /* rounded-md */
+  border: 2px solid rgb(12, 12, 12);
+
+  font-size: 1rem; /* text-base */
+  font-weight: 300; /* font-light */
+
+  outline: none;
+}
+
+/* Placeholder color */
+.navform_input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Focus state */
+.navform_input:focus {
+  border-color: var(--accent);
+}

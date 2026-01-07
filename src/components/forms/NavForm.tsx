@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
+
 interface NavFormProps{
   setAnable: React.Dispatch<boolean>
 }
@@ -68,7 +69,8 @@ const NavForm:React.FC<NavFormProps> = ({setAnable}) => {
       
       <input
       {...register('text',{ onChange: handleInputChange })}
-      className='f10' type='password'/>
+      className='f10 navform_input' 
+      type='password'/>
       {errors.text && <div className='text-slate-300 absolute bottom-[-24x] overflow-hidden text-ellipsis text-nowrap'>{errors.text?.message}</div>}
 
       <button type='submit' 
