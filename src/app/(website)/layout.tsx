@@ -1,6 +1,4 @@
-   
 
-import React from 'react';
 
 async function SiteLayout(
   { children }: { children: React.ReactNode }
@@ -12,7 +10,6 @@ async function SiteLayout(
       backgroundImage: `url(${process.env.NEXT_PUBLIC_DASHBOARD_BG})`,
       }}
     >
-
     {children}
   </div>
   )

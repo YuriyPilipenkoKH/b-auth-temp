@@ -17,11 +17,11 @@ return (
       <div className="flex items-baseline text-4xl font-semibold">
 
         {!anable ? (
-            <h1 className="">Portfolio</h1>
+            <h1 className="">Home</h1>
         ) : (
           <>
             <h1 className="h12">Home</h1>
-            <h1 className="h10">Pf</h1> {/* Always show 'Pf' when anable is true */}
+            <span className="text-sm ml-2">🏠</span>
           </>
         )}
         <span className="text-accent">.</span>

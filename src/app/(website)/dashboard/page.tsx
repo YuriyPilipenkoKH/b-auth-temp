@@ -13,10 +13,7 @@ async function DashboardPage() {
   if (!session) redirect("/login");
   return (
     <div
-      className="min-h-screen flex gap-2 items-center justify-end bg-cover bg-center"
-      style={{
-       backgroundImage: `url(${process.env.NEXT_PUBLIC_DASHBOARD_BG})`,
-      }}
+
     >
       <div className="flex gap-2 items-center justify-end">
 
