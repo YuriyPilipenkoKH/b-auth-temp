@@ -20,7 +20,7 @@ return (
             <h1 className="">Portfolio</h1>
         ) : (
           <>
-            <h1 className="h12">Portfolio</h1>
+            <h1 className="h12">Home</h1>
             <h1 className="h10">Pf</h1> {/* Always show 'Pf' when anable is true */}
           </>
         )}

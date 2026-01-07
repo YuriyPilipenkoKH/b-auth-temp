@@ -30,12 +30,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div
+          className="min-h-screen  bg-cover bg-center"
+          style={{
+          backgroundImage: `url(${process.env.NEXT_PUBLIC_HOME_BG})`,
+          }}
+        >
+
         <Header/>
         {children}
          <Toaster 
           position="top-center" 
           toastOptions={options} 
           gutter={24} />
+        </div>
       </body>
     </html>
   );
