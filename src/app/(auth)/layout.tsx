@@ -1,3 +1,4 @@
+import Header from "@/components/header/Header";
 import { getServerSession } from "@/lib/getServerSession";
 import { redirect } from "next/navigation";
 
@@ -10,13 +11,15 @@ import { redirect } from "next/navigation";
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center"
+      className="min-h-screen bg-cover bg-center"
       style={{
        backgroundImage: `url(${process.env.NEXT_PUBLIC_AUTH_BG})`,
       }}
     >
-
-        {children}
+    <Header/>
+        <div className="flex flex-col items-center justify-center p-4">
+          {children
+          }</div>
     </div>
   )
 }

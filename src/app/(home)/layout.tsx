@@ -1,3 +1,4 @@
+import Header from "@/components/header/Header"
 
 
  async function HomeLayout(
@@ -7,12 +8,12 @@
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center"
+      className="min-h-screen  bg-cover bg-center"
       style={{
        backgroundImage: `url(${process.env.NEXT_PUBLIC_HOME_BG})`,
       }}
     >
-
+    <Header/>
         {children}
     </div>
   )
