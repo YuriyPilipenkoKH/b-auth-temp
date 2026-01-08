@@ -70,8 +70,8 @@ const NavForm:React.FC<NavFormProps> = ({setAnable}) => {
       <input
       {...register('text',{ onChange: handleInputChange })}
       className='f10 navform_input' 
-      type='password'/>
-      {errors.text && <div className='text-slate-300 absolute bottom-[-24x] overflow-hidden text-ellipsis text-nowrap'>{errors.text?.message}</div>}
+      type='text'/>
+      {errors.text && <div className='text-gray-900 absolute bottom-[-24x] overflow-hidden text-ellipsis text-nowrap'>{errors.text?.message}</div>}
 
       <button type='submit' 
       className='visually-hidden'

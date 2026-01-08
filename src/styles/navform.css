@@ -1,16 +1,17 @@
 
 .navform_input {
   display: flex;
-  height: 48px;
+  height: 40px;
 
   padding: 20px 16px; /* py-5 px-4 */
 
-  background-color: var(--primary);
+  background-color: #cbc9c9;
   border-radius: 6px; /* rounded-md */
   border: 2px solid rgb(12, 12, 12);
-
+  color: #333;
   font-size: 1rem; /* text-base */
-  font-weight: 300; /* font-light */
+  font-weight: 600; /* font-light */
+  letter-spacing: 0.15em;
 
   outline: none;
 }
