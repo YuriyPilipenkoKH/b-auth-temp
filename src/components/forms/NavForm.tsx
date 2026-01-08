@@ -27,6 +27,7 @@ const NavForm:React.FC<NavFormProps> = ({setAnable}) => {
       isSubmitting,
     } = formState
     const onSubmit = async (data: navSchemaType) => {
+      
     switch(data.text){
       case process.env.NEXT_PUBLIC_ADMIN_KEY :
         router.push('/stats')
