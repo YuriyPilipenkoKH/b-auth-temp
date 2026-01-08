@@ -1,3 +1,5 @@
+import { NAV_COMMANDS } from "@/data/navCommands";
+import { isAdminKey } from "@/lib/isAdminKey";
 import { navSchema, navSchemaType } from "@/models/navSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -27,36 +29,55 @@ const NavForm:React.FC<NavFormProps> = ({setAnable}) => {
       isSubmitting,
     } = formState
     const onSubmit = async (data: navSchemaType) => {
-      
-    switch(data.text){
-      case process.env.NEXT_PUBLIC_ADMIN_KEY :
-        router.push('/stats')
-        setAnable(false)
-        reset()
-        break;
-      case 'home' :
-        router.push('/')
-        setAnable(false)
-        reset()
-        break;
-      case 'proj' :
-        router.push('/projects')
-        setAnable(false)
-        reset()
-        break;
-      case 'cont' :
-        router.push('/contact')
-        setAnable(false)
-        reset()
-        break;
-      case 'res' :
-        router.push('/resume')
-        setAnable(false)
-        reset()
-        break;
-      default:
-        setError('text', { type: 'manual', message: 'some other time'  }  )
+      const value = data.text.toLowerCase();
+        // ADMIN COMMAND
+    if (isAdminKey(value)) {
+      router.push("/stats");
+      setAnable(false);
+      reset();
+      return;
     }
+
+    const command = NAV_COMMANDS[value];
+    if (!command) {
+      setError("text", {
+        type: "manual",
+        message: "Unknown command",
+      });
+      return;
+    }
+      router.push(command.path);
+      setAnable(false);
+      reset();
+    // switch(data.text){
+    //   case process.env.NEXT_PUBLIC_ADMIN_KEY :
+    //     router.push('/stats')
+    //     setAnable(false)
+    //     reset()
+    //     break;
+    //   case 'home' :
+    //     router.push('/')
+    //     setAnable(false)
+    //     reset()
+    //     break;
+    //   case 'proj' :
+    //     router.push('/projects')
+    //     setAnable(false)
+    //     reset()
+    //     break;
+    //   case 'cont' :
+    //     router.push('/contact')
+    //     setAnable(false)
+    //     reset()
+    //     break;
+    //   case 'res' :
+    //     router.push('/resume')
+    //     setAnable(false)
+    //     reset()
+    //     break;
+    //   default:
+    //     setError('text', { type: 'manual', message: 'some other time'  }  )
+    // }
     }
     const handleInputChange =() => {
       if(errors.text) clearErrors()
