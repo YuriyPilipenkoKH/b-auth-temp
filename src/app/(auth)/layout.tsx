@@ -1,23 +1,18 @@
 import Header from "@/components/header/Header";
 import { getServerSession } from "@/lib/getServerSession";
-
 import { redirect } from "next/navigation";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
-   SearchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}
+  }
 
 
  async function AuthLayout(
-  { children, SearchParams }: AuthLayoutProps
+  { children,}: AuthLayoutProps
  ) {
      const session = await getServerSession();
       if (session)   redirect('/dashboard')
-
-     const searchParams = await SearchParams
-    console.log('params :', searchParams);    
-
+ 
   return (
     <div
       className="min-h-screen bg-cover bg-center"
