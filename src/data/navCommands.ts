@@ -4,12 +4,20 @@ export type NavCommand = {
   requiresAdmin?: boolean;
 };
 
-// const commandsArray = process.env.NEXT_PUBLIC_NAV_COMMANDS?.split(',') || []
+const raw = process.env.NEXT_PUBLIC_NAV_COMMANDS;
+
+if (!raw) {
+  throw new Error("NEXT_PUBLIC_NAV_COMMANDS is missing");
+}
+
 export const NAV_COMMANDS = Object.fromEntries(
-  process.env.NEXT_PUBLIC_NAV_COMMANDS!
-    .split(",")
-    .map(entry => {
-      const [key, path] = entry.split(":");
-      return [key.trim(), { path: path.trim() }];
-    })
-);
+  raw.split(",").map(entry => {
+    const [key, customPath] = entry.split(":").map(s => s.trim());
+
+    const path =
+      customPath ??
+      (key === "home" ? "/" : `/${key}`);
+
+    return [key, { path }];
+  })
+) satisfies Record<string, NavCommand>;
