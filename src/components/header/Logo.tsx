@@ -20,7 +20,7 @@ return (
       
             <h1 className="">Home</h1>
    
-        <span className="text-accent">.</span>
+        {/* <span className="text-accent">.</span> */}
       </div>
     </Link>
     {anable && <NavForm setAnable={setAnable}/>}

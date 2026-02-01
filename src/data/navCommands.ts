@@ -21,3 +21,5 @@ export const NAV_COMMANDS = Object.fromEntries(
     return [key, { path }];
   })
 ) satisfies Record<string, NavCommand>;
+
+console.log("NAV_COMMANDS:", NAV_COMMANDS);
