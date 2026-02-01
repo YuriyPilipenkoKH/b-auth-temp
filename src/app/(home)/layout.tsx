@@ -1,5 +1,3 @@
-import Header from "@/components/header/Header"
-
 
  async function HomeLayout(
   { children }: { children: React.ReactNode } 
@@ -13,7 +11,7 @@ import Header from "@/components/header/Header"
        backgroundImage: `url(${process.env.NEXT_PUBLIC_HOME_BG})`,
       }}
     >
-    <Header/>
+    {/* <Header/> */}
         {children}
     </div>
   )
