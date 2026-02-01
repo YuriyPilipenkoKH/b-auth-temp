@@ -22,4 +22,4 @@ export const NAV_COMMANDS = Object.fromEntries(
   })
 ) satisfies Record<string, NavCommand>;
 
-console.log("NAV_COMMANDS:", NAV_COMMANDS);
+
