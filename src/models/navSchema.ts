@@ -12,8 +12,9 @@ export const navSchema = z.object({
   .refine((val) => val.toLowerCase() !== 'some', {
       message: 'Some not allowed'
     })
-  .refine((val) => val.toLowerCase() !== 'admin', {
-      message: 'Admin not allowed'
-    }),
+  // .refine((val) => val.toLowerCase() !== 'admin', {
+  //     message: 'Admin not allowed'
+  //   })
+    ,
 })
 export type navSchemaType = z.infer<typeof navSchema>
