@@ -6,13 +6,13 @@ export type NavCommand = {
 
 export const NAV_COMMANDS: Record<string, NavCommand> = {
   home: { path: "/" },
-  proj: { path: "/projects" },
-  cont: { path: "/contact" },
-  res: { path: "/resume" },
+  log: { path: "/login" },
+  reg: { path: "/signup" },
+  dash: { path: "/dashboard" },
 
   // admin command
-  stats: {
-    path: "/stats",
+  admin: {
+    path: "/admin",
     requiresAdmin: true,
   },
 };
