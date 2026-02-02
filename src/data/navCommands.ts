@@ -4,10 +4,11 @@ export type NavCommand = {
   requiresAdmin?: boolean;
 };
 
-const raw = process.env.NEXT_PUBLIC_NAV_COMMANDS;
+const raw = process.env.NEXT_PUBLIC_NAV_COMMANDS!;
 
 if (!raw) {
-  throw new Error("NEXT_PUBLIC_NAV_COMMANDS is missing");
+  // throw new Error("NEXT_PUBLIC_NAV_COMMANDS is missing");
+ console.error("NEXT_PUBLIC_NAV_COMMANDS is missing");
 }
 
 export const NAV_COMMANDS = Object.fromEntries(
