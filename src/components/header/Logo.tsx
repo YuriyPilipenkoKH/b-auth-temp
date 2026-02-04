@@ -4,11 +4,10 @@ import { useState } from 'react'
 import NavForm from '../forms/NavForm'
 
 
-
 const Logo = () => {
 const [anable, setAnable] = useState<boolean>(false)
 const rclick = (event: React.MouseEvent) => {
-  event.preventDefault(); // Prevents the default right-click menu
+  event.preventDefault()
   setAnable(!anable);
   };
 
@@ -16,10 +15,7 @@ return (
   <>
     <Link href={"/"} onContextMenu={rclick}>
       <div className="flex items-baseline text-4xl font-semibold">
-
-      
             <h1 className="">Home</h1>
-   
         {/* <span className="text-accent">.</span> */}
       </div>
     </Link>
@@ -27,5 +23,4 @@ return (
   </>
 );
 }
-
 export default Logo

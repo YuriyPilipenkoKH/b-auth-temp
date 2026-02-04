@@ -15,10 +15,8 @@ export const NAV_COMMANDS = Object.fromEntries(
   raw.split(",").map(entry => {
     const [key, customPath] = entry.split(":").map(s => s.trim());
 
-    const path =
-      customPath ??
-      (key === "home" ? "/" : `/${key}`);
-
+    const path = customPath 
+    // ??  (key === "home" ? "/" : `/${key}`);
     return [key, { path }];
   })
 ) satisfies Record<string, NavCommand>;
