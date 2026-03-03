@@ -1,8 +1,12 @@
+// src/actions/github-signin.ts
 'use server'
-import { signIn } from "@/lib/auth/auth-client";
 
-  export const githubSignIn = async () => {
+// import { headers } from "next/headers";
+// import { auth } from "../../auth";
 
-    return  await signIn.social({ provider: "github" })
-    
-  }
+// export async function githubSignIn() {
+//   await auth.api.signIn.social({
+//     provider: "github",
+//     headers: headers(),
+//   });
+// }

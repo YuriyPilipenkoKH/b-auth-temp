@@ -1,9 +1,8 @@
 'use client'
-import  { useActionState } from 'react'
+
 import { FcGoogle } from 'react-icons/fc'
 import { GrGithub } from "react-icons/gr";
-import { googleSignIn } from '@/actions/google-signin'
-import { githubSignIn } from '@/actions/github-signin'
+import { signIn } from '@/lib/auth/auth-client';
 
 
 interface SignInButtonProps {
@@ -11,14 +10,18 @@ interface SignInButtonProps {
 }
 
 const SignInButton = ({provider}:SignInButtonProps) => {
-  const logAction = (provider === 'google') ? googleSignIn : githubSignIn
-  const [message, formAction, isPending] = useActionState(logAction, undefined)
+ 
+   const handleClick = async () => {
+    await signIn.social({
+      provider,
+      callbackURL: "/dashboard", // optional redirect after login
+    });
+  };
     return (
-    <form
-      className='w-full'
-      action={formAction}
-      >
-      <button className='flex w-full justify-center border rounded-lg p-2 space-x-2 items-center'>
+
+      <button 
+      onClick={handleClick}
+      className='flex w-full justify-center border rounded-lg p-2 space-x-2 items-center'>
           <p>
             {`LogIn With ${(provider === 'google') ? 'Google' : 'Github'}`}
             </p> 
@@ -27,9 +30,7 @@ const SignInButton = ({provider}:SignInButtonProps) => {
             : <GrGithub className='h-5 w-5' />
             }
       </button>
-      {/* <p>{isPending ? "Loading..." : message}</p> */}
-      <p>{isPending && "Loading..." }</p>
-    </form>
+
     )
 
 }
