@@ -15,6 +15,7 @@ export default function NotFound() {
           --bg: #0a0a0a;
           --ink: #f0ece0;
           --accent: #ff3e00;
+          --accent: #eee;
           --muted: #3a3a3a;
           --grid: #161616;
         }
@@ -76,14 +77,15 @@ export default function NotFound() {
           line-height: 0.85;
           letter-spacing: -0.02em;
           color: transparent;
-          -webkit-text-stroke: 1.5px var(--muted);
+          -webkit-text-stroke: 2.5px #eee;
           position: relative;
           user-select: none;
           transition: transform 0.1s ease-out;
         }
 
         .four-o-four .accent-zero {
-          -webkit-text-stroke: 1.5px var(--accent);
+          // -webkit-text-stroke: 1.5px var(--accent);
+          -webkit-text-stroke: 2.5px #eee;
           color: transparent;
           position: relative;
         }
@@ -122,10 +124,10 @@ export default function NotFound() {
 
         .label {
           font-family: 'DM Mono', monospace;
-          font-size: 0.65rem;
+          font-size: 1.25rem;
           letter-spacing: 0.3em;
           text-transform: uppercase;
-          color: var(--accent);
+          color: #eee;
           margin-bottom: 0.75rem;
         }
 
@@ -166,7 +168,7 @@ export default function NotFound() {
           content: '';
           position: absolute;
           inset: 0;
-          background: var(--accent);
+          background: #eee;
           transform: translateX(-100%);
           transition: transform 0.25s ease;
           z-index: -1;
@@ -235,7 +237,12 @@ export default function NotFound() {
         .content > *:nth-child(6) { animation-delay: 0.35s; }
       `}</style>
 
-      <div className="page">
+      <div className="page"
+            style={{
+       backgroundImage: `url(${process.env.NEXT_PUBLIC_404_BG})`,
+        backgroundSize: 'cover',
+      }}
+      >
         <div className="grid-bg" />
         <div className="noise" />
 
@@ -247,10 +254,7 @@ export default function NotFound() {
         <div className="content">
           <p className="label">Page not found</p>
 
-          <h1
-            className="four-o-four"
-
-          >
+          <h1  className="four-o-four" >
             4<span className="accent-zero">0</span>4
           </h1>
 
