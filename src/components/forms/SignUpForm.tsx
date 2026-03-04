@@ -37,7 +37,7 @@ const SignUpForm = () => {
     isValid ,
     isSubmitting,
   } = formState
-    const handleInputChange =   (field: keyof RegInput) => {
+    const handleInputChange =   (_field: keyof RegInput) => {
     if(logError) setLogError(null)
     }
 
