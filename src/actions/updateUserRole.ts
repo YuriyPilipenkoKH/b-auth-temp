@@ -29,4 +29,5 @@ export async function updateUserRole(
   );
 
   revalidatePath("/admin/users");
+  return { currentUser };
 }
