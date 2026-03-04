@@ -12,8 +12,8 @@ import Link from "next/link"
          <div className="flex flex-col gap-2 ">
           <h1 className="text-3xl font-bold  text-white">Login </h1>
           <p>Enter Your Account</p>
-          {/* <SignInButton provider='google' /> */}
           <SignInButton provider='github' />
+          <hr className="mt-3" />
       <SignInForm/>
            <p className='text-center'>Don`t have an account? 
             <Link href="/signup" className="hover:text-amber-400">

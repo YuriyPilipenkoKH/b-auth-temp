@@ -1,10 +1,8 @@
 "use server"
 
-
 import { auth } from "../../auth";
 import { mongoClient } from "@/lib/mongo";
 import { revalidatePath } from "next/cache";
-
 
 export async function signUpUser(formData: FormData) {
   const name = formData.get("name") as string;
@@ -19,7 +17,6 @@ export async function signUpUser(formData: FormData) {
     // Connect to Mongo and check if user already exists
     const db = mongoClient.db(process.env.MONGODB_DB_NAME);
     const existingUser = await db.collection("user").findOne({ email });
-
    
     if (existingUser) {
       return { success: false, error: "User already exists." };
