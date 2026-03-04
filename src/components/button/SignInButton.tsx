@@ -18,7 +18,6 @@ const SignInButton = ({provider}:SignInButtonProps) => {
     });
   };
     return (
-
       <button 
       onClick={handleClick}
       className='flex w-full justify-center border rounded-lg p-2 space-x-2 items-center'>
@@ -30,9 +29,7 @@ const SignInButton = ({provider}:SignInButtonProps) => {
             : <GrGithub className='h-5 w-5' />
             }
       </button>
-
     )
-
 }
 
 export default SignInButton

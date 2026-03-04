@@ -6,7 +6,7 @@ import { formClasses } from "@/models/formClasses";
 import { cn } from "@/lib/cn";
 import toast from "react-hot-toast";
 import { signInUser } from "@/actions/signin";
-import { LogInput, LoginSchema, RegInput } from "@/models/schemas";
+import { LogInput, LoginSchema} from "@/models/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
@@ -22,7 +22,7 @@ function SignInForm() {
     handleSubmit,
     formState,
     reset,
-    setError, // Use this to manually set server-side errors
+
   } = useForm<LogInput>({
     defaultValues: {
       email: '',
@@ -48,26 +48,7 @@ function SignInForm() {
     formData.append("email", data.email);
     formData.append("password", data.password);
 
-    // const nextAuthSignIn = async (userName: string) => {
-    //   // Use `signIn` client-side to complete authentication
-    //   const signInResponse = await signIn("credentials", {
-    //    redirect: false,
-    //    email: data.email,
-    //    password: data.password,
-    //    callbackUrl: "/dashboard",
-    //  });
-    //  if (signInResponse?.error) {
-    //    console.error("SignIn error:", signInResponse.error);
-    //    return;
-    //  }
-    //  if (signInResponse?.ok){
-    //    toast.success( 
-    //      `${capitalize(userName)}, your registration was successful! `  
-    //     );
-    //  } 
-    //  }
     try {
-
       const result = await signInUser(formData);
 
       console.log("result:", result);

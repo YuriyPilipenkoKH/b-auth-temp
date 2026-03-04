@@ -21,7 +21,7 @@ const SignUpForm = () => {
     handleSubmit,
     formState,
     reset,
-    setError, // Use this to manually set server-side errors
+
   } = useForm<RegInput>({
     defaultValues: {
       name: '',
@@ -47,24 +47,7 @@ const SignUpForm = () => {
     formData.append("email", data.email);
     formData.append("password", data.password);
 
-    // const nextAuthSignIn = async (userName: string) => {
-    //   // Use `signIn` client-side to complete authentication
-    //   const signInResponse = await signIn("credentials", {
-    //    redirect: false,
-    //    email: data.email,
-    //    password: data.password,
-    //    callbackUrl: "/dashboard",
-    //  });
-    //  if (signInResponse?.error) {
-    //    console.error("SignIn error:", signInResponse.error);
-    //    return;
-    //  }
-    //  if (signInResponse?.ok){
-    //    toast.success( 
-    //      `${capitalize(userName)}, your registration was successful! `  
-    //     );
-    //  } 
-    //  }
+
     try {
 
       const result = await signUpUser(formData);
@@ -76,16 +59,7 @@ const SignUpForm = () => {
         reset()
         router.push('/dashboard')
       } 
-      // else if (result?.errors) {
-      // // Map server errors to react-hook-form errors
-      // for (const [field, messages] of Object.entries(result.errors)) {
-      //   setError(field as keyof RegisterClientSchemaType, {
-      //     type: "server",
-      //     message: messages[0], // Use the first error message for simplicity
-      //   });
-      // }
-        
-      // }
+
     } catch (error) {
       console.error("Registration failed:", error);
       toast.error("Registration failed");
